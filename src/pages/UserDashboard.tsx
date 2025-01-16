@@ -477,9 +477,11 @@ export const UserDashboard = () => {
                                 </div>
                             )}
                         </div>
-                        <button className="bg-green-400 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-800">
-                            Add New Item
-                        </button>
+
+                        {/*<button className="bg-green-400 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-800">*/}
+                        {/*    Add New Item*/}
+                        {/*</button>*/}
+
                     </div>
                 </header>
 

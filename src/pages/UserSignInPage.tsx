@@ -1,7 +1,8 @@
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.css";
+import { AuthInputComponent } from "../components/input/AuthInputComponent";
+import { AuthButtonComponent } from "../components/button/AuthButtonComponent.tsx";
 
 interface FormData {
     email: string;
@@ -82,35 +83,25 @@ export const UserSignInPage = () => {
                     </h2>
 
                     <form className="space-y-8" onSubmit={handleLogin}>
-                        {/* Email Input */}
-                        <div className="mb-6">
-                            <label htmlFor="email" className="block text-lg font-medium text-gray-800">
-                                Email Address
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="w-full p-5 mt-2 border border-gray-300 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition ease-in-out"
-                                placeholder="Enter your email"
-                            />
-                        </div>
+                        {/* Email Input using AuthInputComponent */}
+                        <AuthInputComponent
+                            id="email"
+                            type="email"
+                            placeholder="Enter your email"
+                            label="Email Address"
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
 
-                        {/* Password Input */}
-                        <div className="relative">
-                            <label htmlFor="password" className="block text-lg font-medium text-gray-800">
-                                Password
-                            </label>
-                            <input
-                                type={showPassword ? "text" : "password"}
+                        {/* Password Input using AuthInputComponent */}
+                        <div className="relative mb-6">
+                            <AuthInputComponent
                                 id="password"
-                                name="password"
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Enter your password"
+                                label="Password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="w-full p-5 mt-2 border border-gray-300 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition ease-in-out"
-                                placeholder="Enter your password"
                             />
                             <button
                                 type="button"
@@ -121,17 +112,20 @@ export const UserSignInPage = () => {
                                     className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"}`}
                                 ></i>
                             </button>
+
                         </div>
 
                         {/* Submit Button */}
                         <div className="flex justify-center">
-                            <button
+                            <AuthButtonComponent
                                 type="submit"
-                                className="w-full py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition duration-300 ease-in-out"
-                            >
-                                Log In
-                            </button>
+                                text="Log In"
+                                additionalClasses="w-full py-4"
+                                icon="fa-sign-in-alt"
+                            />
                         </div>
+
+
                     </form>
 
                     {/* Forgot Password and Sign Up Links */}
@@ -154,5 +148,3 @@ export const UserSignInPage = () => {
         </div>
     );
 };
-
-
