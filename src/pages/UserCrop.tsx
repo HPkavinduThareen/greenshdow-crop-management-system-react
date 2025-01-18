@@ -1,14 +1,5 @@
-
-
-
-
-
-
-
-
 import React, { useState } from 'react';
 import '../index.css';
-
 
 export const UserCrop = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,7 +10,7 @@ export const UserCrop = () => {
         fieldId: '',
         category: '',
         season: '',
-        cropImage1: null,
+        cropImage1: null as File | null,
     });
 
     // Function to open the modal
@@ -213,7 +204,7 @@ export const UserCrop = () => {
                                     type="file"
                                     id="cropImage1"
                                     name="cropImage1"
-                                    onChange={(e) => setCropData({ ...cropData, cropImage1: e.target.files?.[0] })}
+                                    onChange={(e) => setCropData({ ...cropData, cropImage1: e.target.files?.[0] || null })}
                                     className="w-full border border-gray-300 rounded-lg p-3"
                                 />
                             </div>
@@ -240,4 +231,3 @@ export const UserCrop = () => {
         </div>
     );
 };
-
